@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Styled Data Table</title>
+  <style>
+   table thead th, table thead td {
+  padding: 5px 10px;
+  font-weight: bold;
+}
+table tbody td, table tbody th {
+  color: #fff;
+  position: relative;
+  padding: 10px 25px;
+}
+table tbody td:before, table tbody th:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  background: green;
+  z-index: -2;
+}
+
+table tbody td {
+  color: #000;
+}
+table tbody td:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  right: 10px;
+  bottom: 0px;
+  background: rgba(200, 200, 200, 0.9);
+  z-index: -1;
+}
+table tbody th:before {
+  border-radius: 5px 0 0 5px;
+  left: 5px;
+}
+table tbody td:last-child:before {
+  border-radius: 0 5px 5px 0;
+}
+table tbody th:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  bottom: 0;
+  border-left: 1px solid red;
+}
+
+table tbody tr:nth-child(1) td:before {
+  background: #b5c3c6 !important;
+}
+
+table tbody tr:nth-child(1) th:before {
+  background:#b5c3c6 !important;
+}
+
+table tbody tr:nth-child(2) td:before {
+  background: #317c6b !important;
+}
+
+table tbody tr:nth-child(2) th:before {
+  background: #317c6b   !important;
+}
+
+table tbody tr:nth-child(3) td:before {
+  background: #a0d2cb !important;
+}
+
+table tbody tr:nth-child(3) th:before {
+  background: #a0d2cb   !important;
+}
+
+table tbody tr:nth-child(4) td:before {
+  background:  #053d50 !important;
+}
+
+table tbody tr:nth-child(4) th:before {
+  background:  #053d50   !important;
+}
+
+table tbody tr:nth-child(5) td:before {
+  background:   #4d7888 !important;
+}
+
+table tbody tr:nth-child(5) th:before {
+  background:   #4d7888   !important;
+}
+
+table tbody tr:first-child th:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  border-top: 1px solid red;
+}
+table tbody tr:last-child th:after {
+  bottom: 5px;
+}
+
+table tbody tr:first-child th:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  border-top: 1px solid #b5c3c6;
+}
+
+table tbody th:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  bottom: 0;
+  border-left: 1px solid #b5c3c6;
+}
+
+table tbody td:before, table tbody th:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  background: #b5c3c6;
+  z-index: -2;
+}
+
+.details {
+  color: green;
+}
+
+table{
+    width: 50%;
+}
+  </style>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0">
+  <thead>
+    <tr>
+      <td></td>
+      <td>2018</td>
+      <td>2017</td>
+      <td>2016</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>XXX</th>
+      <td>0 XXX <span class="details">(+50)</span></td>
+      <td>0 XXX </td>
+      <td>0 XXX </td>
+    </tr>
+    <tr>
+      <th>XXX</th>
+      <td>0 XXX <span class="details">(+50)</span></td>
+      <td>0 XXX </td>
+      <td>0 XXX </td>
+    </tr>
+    <tr>
+      <th>XXX</th>
+      <td>0 XXX <span class="details">(+50)</span></td>
+      <td>0 XXX </td>
+      <td>0 XXX </td>
+    </tr>
+     <tr>
+      <th>XXX</th>
+      <td>0 XXX <span class="details">(+50)</span></td>
+      <td>0 XXX </td>
+      <td>0 XXX </td>
+    </tr>
+    <tr>
+      <th>XXX</th>
+      <td>0 XXX <span class="details">(+50)</span></td>
+      <td>0 XXX </td>
+      <td>0 XXX </td>
+    </tr>
+  </tbody>
+  <!-- each "group" of rows is its own tbody -->
+  
+</table>
+</body>
+</html>

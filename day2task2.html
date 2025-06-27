@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GH day 2 task 2</title>
+ <style>
+   
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: #f4f6f9;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .container {
+        background: white;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: calc(100vh - 40px);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+   
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    input, select, button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    button {
+        background: #0077cc;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    
+    .lists-container {
+        display: flex;
+        gap: 20px;
+        flex-grow: 1;
+        min-height: 0;
+    }
+
+    .list-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #allItemsWrapper, #expensiveItemsWrapper {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+        background: #fafafa;
+        overflow-y: auto;
+        flex-grow: 1;
+    }
+
+   
+    .item-card {
+        background: white;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border-left: 3px solid #0077cc;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+        color: #0077cc;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Guide House Day 2 task 2</h2>
+
+    <form id="itemForm">
+      <input type="number" id="itemId" placeholder="Item ID" required />
+      <input type="text" id="itemName" placeholder="Item Name" required />
+      <input type="number" id="itemPrice" placeholder="Price" required />
+      <input type="number" id="itemQuantity" placeholder="Quantity" required />
+      <select id="itemStock">
+        <option value="true">In Stock</option>
+        <option value="false">Out of Stock</option>
+      </select>
+      <button type="submit">Add Item</button>
+    </form>
+
+    <div class="lists-container">
+      <div class="list-column">
+        <h3>All Items</h3>
+        <div id="allItemsWrapper">
+          <div id="allItems"></div>
+        </div>
+      </div>
+
+      <div class="list-column">
+        <h3>Items with Price &gt; ₹500</h3>
+        <div id="expensiveItemsWrapper">
+          <div id="expensiveItems"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const items = [];
+
+    const form = document.getElementById('itemForm');
+    const allItemsContainer = document.getElementById('allItems');
+    const expensiveItemsContainer = document.getElementById('expensiveItems');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const id = parseInt(document.getElementById('itemId').value);
+      const name = document.getElementById('itemName').value;
+      const price = parseFloat(document.getElementById('itemPrice').value);
+      const quantity = parseInt(document.getElementById('itemQuantity').value);
+      const stock = document.getElementById('itemStock').value === "true";
+
+      const newItem = { id, name, price, quantity, stock };
+      items.push(newItem);
+
+      
+      const createCard = (item) => {
+        const card = document.createElement('div');
+        card.className = 'item-card';
+        card.innerHTML = `
+          <p><strong>ID:</strong> ${item.id}</p>
+          <p><strong>Name:</strong> ${item.name}</p>
+          <p><strong>Price:</strong> ₹${item.price}</p>
+          <p><strong>Quantity:</strong> ${item.quantity}</p>
+          <p><strong>Stock:</strong> ${item.stock ? 'Yes' : 'No'}</p>
+        `;
+        return card;
+      };
+
+      
+      allItemsContainer.appendChild(createCard(newItem));
+
+    
+      if (price > 500) {
+        expensiveItemsContainer.appendChild(createCard(newItem));
+      }
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
