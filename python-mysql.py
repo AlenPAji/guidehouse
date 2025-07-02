@@ -18,7 +18,7 @@ def create_table(cursor):
             designation VARCHAR(100)
         )
     """)
-    print("✅ Table 'employee' is ready (created if it didn't exist).\n")
+    print("Table 'employee' is ready (created if it didn't exist).\n")
     
 
 def insert_employee(cursor, conn):
@@ -40,7 +40,7 @@ def view_employees(cursor):
         for row in rows:
             print(f"{row[0]:<2} | {row[1]:<13} | {row[2]:<8} | {row[3]}")
     else:
-        print("⚠️  No employee records found.\n")
+        print("No employee records found.\n")
 
 def main():
     conn = connect_db()
@@ -62,7 +62,7 @@ def main():
             print("Exiting program.")
             break
         else:
-            print("⚠️ Invalid choice. Please enter 1, 2, or 0.")
+            print(" Invalid choice. Please enter 1, 2, or 0.")
 
     cursor.close()
     conn.close()
